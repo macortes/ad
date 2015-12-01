@@ -3,6 +3,11 @@ using System.Reflection;
 
 namespace PReflection
 {
+
+	/* VENTAJAS DE REFLECTION
+
+
+	  */
 	class MainClass
 	{
 		public static void Main (string[] args)
@@ -56,21 +61,45 @@ namespace PReflection
 		}
 		private static void showObject(object obj){   //Le pasas un objeto
 			Type type = obj.GetType ();
-			PropertyInfo[] propertyInfos = type.GetProperties ();
+
+
+			if(!(obj is Attribute))
+			//MOSTRAR ATRIBUTO TABLE
+
+
+			object[] attributes = type.GetCustomAttributes (true);
+			foreach(Attribute attribute in attributes){
+				showObject(attribute);
+
+			}
+		
+			PropertyInfo[] propertyInfos = type.GetProperties ();  //devuelve las propiedades
+			//type.GetMethods;   ->  Devuelve los metodos
+
 			foreach (PropertyInfo propertyInfo in propertyInfos) {
-				Console.WriteLine ("{0}={1}",propertyInfo.Name,propertyInfo.GetValue(obj,null));  //null porque no recibe un array
+				if (propertyInfo.IsDefined (typeof(IdAtribute), true)) {
+					Console.WriteLine ("{0}= decorado con id attributte ", propertyInfo.Name);
+
+
+				}
+				/*Se leen los valores de las propiedades ,*/
+				Console.WriteLine ("{0}={1}",propertyInfo.Name,propertyInfo.GetValue(obj,null));  //null porque no recibe un array,solo sirve para indizar
 			}
 		}
 		private static void setValues(object obj,object[] values){
-			Type type = obj.GetType ();
+			Type type = obj.GetType ();   //Tipo del objeto al que se hace referencia !!!IMPORTANTE!!->    NO de la variable!!
 			int index = 0;
 			PropertyInfo[] propertyInfos = type.GetProperties ();
-			foreach (PropertyInfo propertyInfo in propertyInfos) {
+			foreach (PropertyInfo propertyInfo in propertyInfos) {  //foreach pasa por cada propiedad
+				/*SET VALUES , tiene dos parametros el objeto y los valores a asignar, se obtiene el tipo */
 				propertyInfo.SetValue(obj,values[index++],null);  //null porque no recibe un array
 			}
 		}
 
 	}
+
+
+
 
 	public class Foo {
 		private string name;
@@ -95,6 +124,7 @@ namespace PReflection
 			}
 		}
 	}
+			[Table(Name="article")]
 			public class Articulo
 			{
 				public Articulo ()
@@ -105,7 +135,8 @@ namespace PReflection
 				private string nombre;
 				private object categoria;
 				private decimal precio;
-
+					
+				[IdAtribute]
 				public object Id {
 					get { 
 						return id;
@@ -144,4 +175,24 @@ namespace PReflection
 					}
 				}
 			}
-}
+
+		}
+
+
+
+
+			//ATRIBUTOS COMUNES A DISTINTAS CLASES
+	public class IdAtribute: Attribute{
+
+
+	  //lo que quieras + attribute EJ
+	   //   Author : attribute
+	}
+
+	public class TableAttribute :Attribute{
+
+
+
+	}
+
+
