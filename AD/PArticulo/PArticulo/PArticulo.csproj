@@ -58,7 +58,7 @@
     </Reference>
     <Reference Include="Mono.Posix" />
     <Reference Include="MySql.Data">
-      <HintPath>..\..\..\..\..\..\usr\lib\cli\MySql.Data-6.4\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\..\..\usr\lib\cli\MySql.Data-6.4\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
   </ItemGroup>
@@ -73,6 +73,10 @@
     <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="App.cs" />
+    <Compile Include="QueryResult.cs" />
+    <Compile Include="PersisterHelper.cs" />
+    <Compile Include="Persister.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

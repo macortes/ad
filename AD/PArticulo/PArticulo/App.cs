@@ -2,7 +2,7 @@ using System;
 using System.Data;
 using MySql.Data.MySqlClient;
 
-namespace SerpisAd
+namespace PArticulo
 {
 	public class App
 	{

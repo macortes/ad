@@ -2,13 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace SerpisAd
+namespace PArticulo
 {
 	public class QueryResult
 	{
 		private string[] columnNames;
 		public string[] ColumnNames {
-			get {return columnNames;}
+			get {
+				return columnNames;
+			}
 			set {columnNames = value;}
 		}
 
