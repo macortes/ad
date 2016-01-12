@@ -1,0 +1,26 @@
+package org.institutoserpis.ad;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class PruebaArticuloProfe {
+	private enum Action {Salir,Nuevo,Editar,Eliminar,Consultar,Listar};
+	private static Scanner tec= new Scanner(System.in);
+	private static Action scanAction(){
+		System.out.print("0-Salir 1-Nuevo 2-Editar 3-Eliminar 4-Consultar 5-Listar");
+		String accion= tec.nextLine().trim(); //Quita espacios en blanco .trim()
+		return Action.Salir;
+	}
+	public static void main(String[] args) throws SQLException {
+		// TODO Auto-generated method stub
+	/*	
+	 * Connection connection =  DriverManager.getConnection(  
+				"jdbc:mysql://localhost/dbprueba","root","sistemas");   //Modo de conexion BBDD
+		connection.close();
+		*/
+		scanAction();
+	}
+
+}
