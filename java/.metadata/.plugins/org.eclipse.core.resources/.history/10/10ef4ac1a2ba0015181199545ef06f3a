@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -193,13 +192,6 @@ public class PruebaArticuloProfe {
 		System.out.println("  nombre"+resultSet.getObject("nombre"));
 		System.out.println("   categoria"+resultSet.getObject("categoria"));
 		System.out.println("   precio"+resultSet.getObject("precio"));
-	}
-	private static void showCurrentRow(ResultSet resultSet) throws SQLException{
-		ResultSetMetaData resultSetMetaData =  resultSet.getMetaData();
-		for(int i=0;i<=resultSetMetaData.getColumnCount();i++){
-			System.out.println(resultSetMetaData.getColumnType(i));
-			System.out.println(resultSet.getObject(i));
-		}
 	}
 	
 	
